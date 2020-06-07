@@ -4,14 +4,25 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "parcel-bundler": "^1.12.4"
-  },
-  "devDependencies": {
+    "@types/react": "^16.9.35",
+    "@types/react-dom": "^16.9.8",
+    "@types/react-router-dom": "^5.1.5",
+    "@types/styled-components": "^5.1.0",
+    "bootstrap": "^4.5.0",
+    "parcel-bundler": "^1.12.4",
+    "react": "^16.13.1",
+    "react-bootstrap": "^1.0.1",
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0",
+    "styled-components": "^5.1.1",
     "typescript": "^3.9.5"
   },
   "scripts": {
     "dev": "parcel src/index.html",
     "build": "parcel build src/index.html"
+  },
+  "alias": {
+    "src": "./src"
   },
   "keywords": [],
   "author": "",
