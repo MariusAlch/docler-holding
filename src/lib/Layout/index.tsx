@@ -3,6 +3,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { plainGray } from "src/lib/colors";
 import { Text } from "src/lib/Text";
+import { BlinkingText } from "src/lib/BlinkingText";
+import { useStore } from "src/lib/Store";
 
 const Nav = styled.div`
   border-bottom: 1px solid ${plainGray};
@@ -17,15 +19,24 @@ const NavItem = styled.div`
   display: inline-flex;
   justify-content: center;
   align-items: center;
+  min-width: 100px;
 `;
 
 export const Layout: React.FunctionComponent = ({ children }) => {
+  const { messages } = useStore();
+
   return (
     <>
       <Nav>
         <NavItem>
           <Link to="/">
-            <Text textId="chat" />
+            {messages.unreadNotification ? (
+              <BlinkingText>
+                <Text textId="chat" />
+              </BlinkingText>
+            ) : (
+              <Text textId="chat" />
+            )}
           </Link>
         </NavItem>
         <NavItem>

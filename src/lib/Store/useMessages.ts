@@ -7,6 +7,11 @@ const io = socketIO("http://localhost:3000");
 
 export function useMessages(settings: ReturnType<typeof useSettings>) {
   const [messagesList, setMessagesList] = useState<Message[]>([]);
+  const [unreadNotification, setUnreadNotification] = useState<boolean>(false);
+
+  function clearUnreadNotification() {
+    setUnreadNotification(false);
+  }
 
   function sendMessage(content: string) {
     const message: Message = {
@@ -19,9 +24,12 @@ export function useMessages(settings: ReturnType<typeof useSettings>) {
   }
 
   useEffect(() => {
-    io.on("message", (message: Message) =>
-      setMessagesList((list) => [...list, message])
-    );
+    io.on("message", (message: Message) => {
+      setMessagesList((list) => [...list, message]);
+      if (location.pathname !== "/") {
+        setUnreadNotification(true);
+      }
+    });
     io.on("history", (messagesHistory: Message[]) =>
       setMessagesList(messagesHistory)
     );
@@ -30,5 +38,7 @@ export function useMessages(settings: ReturnType<typeof useSettings>) {
   return {
     messagesList,
     sendMessage,
+    unreadNotification,
+    clearUnreadNotification,
   };
 }

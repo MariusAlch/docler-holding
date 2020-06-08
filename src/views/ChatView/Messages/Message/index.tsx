@@ -19,6 +19,7 @@ const Content = styled.div<{ isOwner: boolean }>`
   background-color: ${(p) => (p.isOwner ? easyBlue : sadGray)};
   color: ${(p) => (p.isOwner ? racingWhite : textBlack)};
   padding: 4px 8px;
+  display: inline-block;
 `;
 
 const Details = styled.div<{ isOwner: boolean }>`

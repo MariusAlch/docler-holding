@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Layout } from "src/lib/Layout";
 import { Messages } from "./Messages";
 import { MessageInput } from "./MessageInput";
 import styled from "styled-components";
+import { useStore } from "src/lib/Store";
 
 const Root = styled.div`
   display: flex;
@@ -11,6 +12,11 @@ const Root = styled.div`
 `;
 
 export function ChatView() {
+  const { messages } = useStore();
+  useEffect(() => {
+    messages.clearUnreadNotification();
+  }, []);
+
   return (
     <Layout>
       <Root>
