@@ -7,6 +7,10 @@ import React from "react";
 import { SettingsView } from "./views/SettingsView/index";
 import { StoreProvider } from "./lib/Store";
 
+// TODO: handle blinking title
+// TODO: add tests
+// TODO: add readme
+
 function App() {
   return (
     <StoreProvider>

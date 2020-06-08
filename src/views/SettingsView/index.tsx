@@ -27,6 +27,10 @@ export function SettingsView() {
   const formik = useFormik({
     initialValues: settings.settings,
     onSubmit: (values) => {
+      if (values.username.length < 5) {
+        return alert("Username cannot be less than 5 letters");
+      }
+
       settings.setSettings(values);
       alert("Settings updated!");
     },

@@ -21,8 +21,12 @@ function useMessages(settings: ReturnType<typeof useSettings>) {
   }
 
   useEffect(() => {
-    io.on("message", (message: Message) => setMessagesList((list) => [...list, message]));
-    io.on("history", (messagesHistory: Message[]) => setMessagesList(messagesHistory));
+    io.on("message", (message: Message) =>
+      setMessagesList((list) => [...list, message])
+    );
+    io.on("history", (messagesHistory: Message[]) =>
+      setMessagesList(messagesHistory)
+    );
   }, []);
 
   return {
@@ -30,8 +34,6 @@ function useMessages(settings: ReturnType<typeof useSettings>) {
     sendMessage,
   };
 }
-
-// TODO: handle empty username
 
 function useSettings() {
   const defaultSettings: Settings = {
@@ -41,10 +43,16 @@ function useSettings() {
     sendOnEnter: "on",
     language: "english",
   };
-  const [settings, setSettings] = useLocalStorage<Settings>("settings", defaultSettings);
+  const [settings, setSettings] = useLocalStorage<Settings>(
+    "settings",
+    defaultSettings
+  );
 
   function resetSettings() {
-    const newSettings: Settings = { ...defaultSettings, username: settings!.username };
+    const newSettings: Settings = {
+      ...defaultSettings,
+      username: settings!.username,
+    };
     setSettings(newSettings);
   }
 
