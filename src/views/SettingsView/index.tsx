@@ -4,6 +4,7 @@ import { Form, Button } from "react-bootstrap";
 import styled from "styled-components";
 import { useFormik } from "formik";
 import { useStore } from "src/lib/Store";
+import { Text } from "src/lib/Text";
 
 const Root = styled.div`
   max-width: 400px;
@@ -19,10 +20,9 @@ const Root = styled.div`
 // TODO: handle time format settings
 // TODO: handle interface colour
 // TODO: handle send on CTRL + ENTER
-// TODO: handle language
 
 export function SettingsView() {
-  const { settings } = useStore();
+  const { settings, language } = useStore();
 
   const formik = useFormik({
     initialValues: settings.settings,
@@ -47,7 +47,9 @@ export function SettingsView() {
       <Root>
         <Form onSubmit={formik.handleSubmit}>
           <Form.Group>
-            <Form.Label>Username</Form.Label>
+            <Form.Label>
+              <Text textId="username" />
+            </Form.Label>
             <Form.Control
               onChange={formik.handleChange}
               value={formik.values.username}
@@ -57,7 +59,9 @@ export function SettingsView() {
             />
           </Form.Group>
           <Form.Group>
-            <Form.Label>Interface colour</Form.Label>
+            <Form.Label>
+              <Text textId="interfaceColor" />
+            </Form.Label>
             <div>
               <Form.Check
                 onChange={formik.handleChange}
@@ -66,7 +70,7 @@ export function SettingsView() {
                 type="radio"
                 inline
                 value="light"
-                label="Light"
+                label={language.getText("light")}
               />
               <Form.Check
                 onChange={formik.handleChange}
@@ -75,12 +79,14 @@ export function SettingsView() {
                 type="radio"
                 inline
                 value="dark"
-                label="Dark"
+                label={language.getText("dark")}
               />
             </div>
           </Form.Group>
           <Form.Group>
-            <Form.Label>Clock display</Form.Label>
+            <Form.Label>
+              <Text textId="clockDisplay" />
+            </Form.Label>
             <div>
               <Form.Check
                 onChange={formik.handleChange}
@@ -89,7 +95,7 @@ export function SettingsView() {
                 type="radio"
                 inline
                 value="12hours"
-                label="12 hours"
+                label={language.getText("hours12")}
               />
               <Form.Check
                 onChange={formik.handleChange}
@@ -98,12 +104,14 @@ export function SettingsView() {
                 type="radio"
                 inline
                 value="24hours"
-                label="24 hours"
+                label={language.getText("hours24")}
               />
             </div>
           </Form.Group>
           <Form.Group>
-            <Form.Label>Send messages on CTRL+ENTER</Form.Label>
+            <Form.Label>
+              <Text textId="sendOnEnter" />
+            </Form.Label>
             <div>
               <Form.Check
                 onChange={formik.handleChange}
@@ -112,7 +120,7 @@ export function SettingsView() {
                 type="radio"
                 inline
                 value="on"
-                label="On"
+                label={language.getText("on")}
               />
               <Form.Check
                 onChange={formik.handleChange}
@@ -121,12 +129,14 @@ export function SettingsView() {
                 type="radio"
                 inline
                 value="off"
-                label="Off"
+                label={language.getText("off")}
               />
             </div>
           </Form.Group>
           <Form.Group>
-            <Form.Label>Language</Form.Label>
+            <Form.Label>
+              <Text textId="language" />
+            </Form.Label>
             <Form.Control
               onChange={formik.handleChange}
               value={formik.values.language}
@@ -134,11 +144,11 @@ export function SettingsView() {
               as="select"
             >
               <option value="EN">English</option>
-              <option value="LT">Lithuanian</option>
+              <option value="LT">Lietuvių</option>
             </Form.Control>
           </Form.Group>
           <Button variant="primary" type="submit">
-            Submit
+            <Text textId="submit" />
           </Button>
           <Button
             style={{ marginLeft: 8 }}
@@ -146,7 +156,7 @@ export function SettingsView() {
             type="button"
             onClick={resetSettings}
           >
-            Reset to defaults
+            <Text textId="resetDefaults" />
           </Button>
         </Form>
       </Root>

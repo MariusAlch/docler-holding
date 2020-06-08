@@ -2,6 +2,7 @@ import styled from "styled-components";
 import React from "react";
 import { Link } from "react-router-dom";
 import { plainGray } from "src/lib/colors";
+import { Text } from "src/lib/Text";
 
 const Nav = styled.div`
   border-bottom: 1px solid ${plainGray};
@@ -23,10 +24,14 @@ export const Layout: React.FunctionComponent = ({ children }) => {
     <>
       <Nav>
         <NavItem>
-          <Link to="/">Chat</Link>
+          <Link to="/">
+            <Text textId="chat" />
+          </Link>
         </NavItem>
         <NavItem>
-          <Link to="/settings">Settings</Link>
+          <Link to="/settings">
+            <Text textId="settings" />
+          </Link>
         </NavItem>
       </Nav>
       {children}
