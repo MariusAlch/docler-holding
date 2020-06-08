@@ -18,6 +18,7 @@ const Root = styled.div`
 `;
 
 // TODO: handle interface colour
+// TODO: translate alerts
 
 export function SettingsView() {
   const { settings, language } = useStore();

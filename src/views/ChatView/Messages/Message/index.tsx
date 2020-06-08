@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { easyBlue, sadGray, textBlack, racingWhite } from "src/lib/colors";
 import { Message } from "src/model";
 import { useStore } from "src/lib/Store";
 import { Time } from "src/lib/Time";
@@ -16,8 +15,8 @@ const Root = styled.div<{ isOwner: boolean }>`
 const Content = styled.div<{ isOwner: boolean }>`
   max-width: 600px;
   border-radius: 4px;
-  background-color: ${(p) => (p.isOwner ? easyBlue : sadGray)};
-  color: ${(p) => (p.isOwner ? racingWhite : textBlack)};
+  background-color: ${(p) => (p.isOwner ? p.theme.easyBlue : p.theme.sadGray)};
+  color: ${(p) => (p.isOwner ? p.theme.racingWhite : p.theme.textBlack)};
   padding: 4px 8px;
   display: inline-block;
 `;

@@ -2,14 +2,13 @@ import React from "react";
 import styled from "styled-components";
 import { useFormik } from "formik";
 import { Button, Form } from "react-bootstrap";
-import { plainGray } from "src/lib/colors";
 import { useStore } from "src/lib/Store";
 import { Text } from "src/lib/Text";
 
 const Root = styled.form`
   display: flex;
   padding: 8px;
-  border-top: 1px solid ${plainGray};
+  border-top: 1px solid ${(p) => p.theme.plainGray};
 `;
 
 const StyledButton = styled(Button)`
