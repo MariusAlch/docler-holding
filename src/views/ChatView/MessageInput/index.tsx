@@ -17,17 +17,23 @@ const StyledButton = styled(Button)`
 `;
 
 export function MessageInput() {
-  const { messages } = useStore();
+  const { messages, settings } = useStore();
   const formik = useFormik({
     initialValues: {
       content: "",
     },
     onSubmit: ({ content }) => {
-      if (!content.trim()) return;
-      messages.sendMessage(content);
+      const trimmedMessage = content.trim();
+      if (trimmedMessage === "") return;
+      messages.sendMessage(trimmedMessage);
       formik.setValues({ content: "" });
     },
   });
+
+  function handleKeyDown(e: React.KeyboardEvent<HTMLTextAreaElement>) {
+    if (settings.settings.sendOnEnter === "off") return;
+    if (e.ctrlKey && e.keyCode == 13) formik.submitForm();
+  }
 
   return (
     <Root onSubmit={formik.handleSubmit}>
@@ -35,6 +41,7 @@ export function MessageInput() {
         name="content"
         style={{ resize: "none" }}
         as="textarea"
+        onKeyDown={handleKeyDown}
         onChange={formik.handleChange}
         value={formik.values.content}
       />

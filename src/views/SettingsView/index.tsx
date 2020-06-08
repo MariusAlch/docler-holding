@@ -18,7 +18,6 @@ const Root = styled.div`
 `;
 
 // TODO: handle interface colour
-// TODO: handle send on CTRL + ENTER
 
 export function SettingsView() {
   const { settings, language } = useStore();
