@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 import React from "react";
 import { Link } from "react-router-dom";
 import { Text } from "src/lib/Text";
@@ -6,7 +6,7 @@ import { BlinkingText } from "src/lib/BlinkingText";
 import { useStore } from "src/lib/Store";
 
 const Nav = styled.div`
-  border-bottom: 1px solid ${(p) => p.theme.plainGray};
+  border-bottom: 1px solid ${(p) => p.theme.gray};
   display: flex;
   align-items: center;
   height: 50px;
@@ -21,11 +21,19 @@ const NavItem = styled.div`
   min-width: 100px;
 `;
 
+const GlobalStyle = createGlobalStyle`
+  body {
+    color: ${(p) => p.theme.font};
+    background-color: ${(p) => p.theme.background};
+  }
+`;
+
 export const Layout: React.FunctionComponent = ({ children }) => {
   const { messages } = useStore();
 
   return (
     <>
+      <GlobalStyle />
       <Nav>
         <NavItem>
           <Link to="/">

@@ -15,8 +15,8 @@ const Root = styled.div<{ isOwner: boolean }>`
 const Content = styled.div<{ isOwner: boolean }>`
   max-width: 600px;
   border-radius: 4px;
-  background-color: ${(p) => (p.isOwner ? p.theme.easyBlue : p.theme.sadGray)};
-  color: ${(p) => (p.isOwner ? p.theme.racingWhite : p.theme.textBlack)};
+  background-color: ${(p) => (p.isOwner ? p.theme.blue : p.theme.lightGray)};
+  color: ${(p) => (p.isOwner ? p.theme.white : p.theme.darkGray)};
   padding: 4px 8px;
   display: inline-block;
 `;

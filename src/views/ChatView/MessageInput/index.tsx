@@ -8,7 +8,7 @@ import { Text } from "src/lib/Text";
 const Root = styled.form`
   display: flex;
   padding: 8px;
-  border-top: 1px solid ${(p) => p.theme.plainGray};
+  border-top: 1px solid ${(p) => p.theme.gray};
 `;
 
 const StyledButton = styled(Button)`

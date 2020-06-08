@@ -1,5 +1,6 @@
 import { ThemeProvider } from "styled-components";
 import React from "react";
+import { useStore } from "src/lib/Store";
 
 type Theme = { [key in keyof typeof lightTheme]: string };
 declare module "styled-components" {
@@ -7,24 +8,38 @@ declare module "styled-components" {
 }
 
 const lightTheme = {
-  plainGray: "#ddd",
-  easyBlue: "#0084ff",
-  sadGray: "#f1f0f0",
-  textBlack: "#333",
-  racingWhite: "#FFF",
+  darkGray: "#333",
+  gray: "#DDD",
+  blue: "#0084ff",
+  lightGray: "#f1f0f0",
+  font: "#333",
+  white: "#FFF",
+  background: "#FFF",
 };
 
 const darkTheme: Theme = {
-  plainGray: "#ddd",
-  easyBlue: "#0084ff",
-  sadGray: "#f1f0f0",
-  textBlack: "#333",
-  racingWhite: "#FFF",
+  darkGray: "#333",
+  gray: "#DDD",
+  blue: "#0084ff",
+  lightGray: "#f1f0f0",
+  font: "#EEE",
+  white: "#FFF",
+  background: "#161616",
 };
 
 interface Props {
   children?: React.ReactNode;
 }
 export function Theme({ children }: Props) {
-  return <ThemeProvider theme={lightTheme}>{children}</ThemeProvider>;
+  const { settings } = useStore();
+
+  return (
+    <ThemeProvider
+      theme={
+        settings.settings.interfaceColor === "dark" ? darkTheme : lightTheme
+      }
+    >
+      {children}
+    </ThemeProvider>
+  );
 }

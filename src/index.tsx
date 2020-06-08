@@ -13,8 +13,8 @@ import { Theme } from "./lib/Theme";
 
 function App() {
   return (
-    <Theme>
-      <StoreProvider>
+    <StoreProvider>
+      <Theme>
         <Router>
           <Switch>
             <Route exact path="/">
@@ -25,8 +25,8 @@ function App() {
             </Route>
           </Switch>
         </Router>
-      </StoreProvider>
-    </Theme>
+      </Theme>
+    </StoreProvider>
   );
 }
 
