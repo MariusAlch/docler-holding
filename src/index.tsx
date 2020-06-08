@@ -5,19 +5,22 @@ import ReactDOM from "react-dom";
 import { ChatView } from "./views/ChatView";
 import React from "react";
 import { SettingsView } from "./views/SettingsView/index";
+import { StoreProvider } from "./lib/Store";
 
 function App() {
   return (
-    <Router>
-      <Switch>
-        <Route exact path="/">
-          <ChatView />
-        </Route>
-        <Route exact path="/settings">
-          <SettingsView />
-        </Route>
-      </Switch>
-    </Router>
+    <StoreProvider>
+      <Router>
+        <Switch>
+          <Route exact path="/">
+            <ChatView />
+          </Route>
+          <Route exact path="/settings">
+            <SettingsView />
+          </Route>
+        </Switch>
+      </Router>
+    </StoreProvider>
   );
 }
 

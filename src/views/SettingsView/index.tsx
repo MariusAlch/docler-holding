@@ -127,6 +127,9 @@ export function SettingsView() {
           <Button variant="primary" type="submit">
             Submit
           </Button>
+          <Button style={{ marginLeft: 8 }} variant="secondary" type="button">
+            Reset to defaults
+          </Button>
         </Form>
       </Root>
     </Layout>
