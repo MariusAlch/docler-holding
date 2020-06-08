@@ -17,6 +17,8 @@ const EN = {
   on: "On",
   off: "Off",
   language: "Language",
+  usernameTooShort: "Username cannot be less than 5 letters",
+  settingsUpdated: "Settings updated!",
 };
 
 const LT: { [key in TextId]: string } = {
@@ -36,6 +38,8 @@ const LT: { [key in TextId]: string } = {
   on: "Įjungta",
   off: "Išjungta",
   language: "Kalba",
+  usernameTooShort: "Vartotojo vardas negali būti trumpesnis nei 5 simboliai",
+  settingsUpdated: "Nustatymai atnaujinti!",
 };
 
 export type TextId = keyof typeof EN;

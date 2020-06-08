@@ -18,7 +18,6 @@ const Root = styled.div`
 `;
 
 // TODO: handle interface colour
-// TODO: translate alerts
 
 export function SettingsView() {
   const { settings, language } = useStore();
@@ -27,18 +26,18 @@ export function SettingsView() {
     initialValues: settings.settings,
     onSubmit: (values) => {
       if (values.username.length < 5) {
-        return alert("Username cannot be less than 5 letters");
+        return alert(language.getText("usernameTooShort"));
       }
 
       settings.setSettings(values);
-      alert("Settings updated!");
+      alert(language.getText("settingsUpdated"));
     },
   });
 
   function resetSettings() {
     settings.resetSettings();
     formik.setValues(settings.settings);
-    alert("Settings were reset!");
+    alert(language.getText("settingsUpdated"));
   }
 
   return (
