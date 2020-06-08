@@ -17,7 +17,6 @@ const Root = styled.div`
   }
 `;
 
-// TODO: handle time format settings
 // TODO: handle interface colour
 // TODO: handle send on CTRL + ENTER
 

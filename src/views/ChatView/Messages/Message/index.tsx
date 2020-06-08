@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { easyBlue, sadGray, textBlack, racingWhite } from "src/lib/colors";
 import { Message } from "src/model";
 import { useStore } from "src/lib/Store";
-import moment from "moment";
+import { Time } from "src/lib/Time";
 
 const Root = styled.div<{ isOwner: boolean }>`
   display: flex;
@@ -35,14 +35,13 @@ export function Message({ message }: Props) {
   const { settings } = useStore();
 
   const isOwner = message.username === settings.settings.username;
-  const formattedTime = moment(message.timestamp).format("LT");
 
   return (
     <Root isOwner={isOwner}>
       <div>
         <Details isOwner={isOwner}>
           {!isOwner ? `${message.username} - ` : ""}
-          {formattedTime}
+          <Time timestamp={message.timestamp} />
         </Details>
         <Content isOwner={isOwner}>{message.content}</Content>
       </div>
