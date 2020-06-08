@@ -10,5 +10,5 @@ export interface Settings {
   username: string;
   clockFormat: "12hours" | "24hours";
   sendOnEnter: "on" | "off";
-  language: "english" | "lithuanian";
+  language: "EN" | "LT";
 }

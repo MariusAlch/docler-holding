@@ -4,6 +4,7 @@ import { useFormik } from "formik";
 import { Button, Form } from "react-bootstrap";
 import { plainGray } from "src/lib/colors";
 import { useStore } from "src/lib/Store";
+import { Text } from "src/lib/Text";
 
 const Root = styled.form`
   display: flex;
@@ -37,7 +38,9 @@ export function MessageInput() {
         onChange={formik.handleChange}
         value={formik.values.content}
       />
-      <StyledButton type="submit">Send</StyledButton>
+      <StyledButton type="submit">
+        <Text textId="send" />
+      </StyledButton>
     </Root>
   );
 }

@@ -133,8 +133,8 @@ export function SettingsView() {
               name="language"
               as="select"
             >
-              <option value="english">English</option>
-              <option value="lithuanian">Lithuanian</option>
+              <option value="EN">English</option>
+              <option value="LT">Lithuanian</option>
             </Form.Control>
           </Form.Group>
           <Button variant="primary" type="submit">
