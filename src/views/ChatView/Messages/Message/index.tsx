@@ -2,6 +2,7 @@ import React, { ReactNode } from "react";
 import styled from "styled-components";
 import { easyBlue, sadGray, textBlack, racingWhite } from "src/lib/colors";
 import { Message } from "src/model";
+import { useStore } from "src/lib/Store";
 
 const Root = styled.div<{ isOwner: boolean }>`
   display: flex;
@@ -26,14 +27,13 @@ const Details = styled.div<{ isOwner: boolean }>`
   text-align: ${(p) => (p.isOwner ? "right" : "left")};
 `;
 
-// TODO: handle my message
-
 interface Props {
   message: Message;
 }
 export function Message({ message }: Props) {
-  const myId = "1";
-  const isOwner = message.userId === myId;
+  const { settings } = useStore();
+
+  const isOwner = message.username === settings.settings.username;
 
   const date = new Date(message.timestamp);
   const formattedTime = `${date.getHours()}:${date.getMinutes()}`;

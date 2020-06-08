@@ -22,9 +22,13 @@ function useMessages(settings: ReturnType<typeof useSettings>) {
 
   useEffect(() => {
     io.on("message", (message: Message) => setMessagesList((list) => [...list, message]));
+    io.on("history", (messagesHistory: Message[]) => setMessagesList(messagesHistory));
   }, []);
 
-  return { messagesList, sendMessage };
+  return {
+    messagesList,
+    sendMessage,
+  };
 }
 
 // TODO: handle empty username
@@ -32,7 +36,7 @@ function useMessages(settings: ReturnType<typeof useSettings>) {
 function useSettings() {
   const defaultSettings: Settings = {
     interfaceColor: "light",
-    username: "",
+    username: `anonymous${Math.floor(Math.random() * 10000)}`,
     clockFormat: "12hours",
     sendOnEnter: "on",
     language: "english",

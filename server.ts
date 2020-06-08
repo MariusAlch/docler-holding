@@ -1,13 +1,17 @@
 import socketIO from "socket.io";
 import http from "http";
+import { Message } from "src/model";
 
 const server = http.createServer();
 const io = socketIO(server);
 
-// TODO: save message history
+const messagesHistory: Message[] = [];
 
 io.on("connection", (socket) => {
-  socket.on("message", (message: string) => {
+  socket.emit("history", messagesHistory);
+
+  socket.on("message", (message: Message) => {
+    messagesHistory.push(message);
     io.sockets.send(message);
   });
 });
