@@ -16,6 +16,11 @@ const Root = styled.div`
   }
 `;
 
+// TODO: handle time format settings
+// TODO: handle interface colour
+// TODO: handle send on CTRL + ENTER
+// TODO: handle language
+
 export function SettingsView() {
   const { settings } = useStore();
 
@@ -23,8 +28,15 @@ export function SettingsView() {
     initialValues: settings.settings,
     onSubmit: (values) => {
       settings.setSettings(values);
+      alert("Settings updated!");
     },
   });
+
+  function resetSettings() {
+    settings.resetSettings();
+    formik.setValues(settings.settings);
+    alert("Settings were reset!");
+  }
 
   return (
     <Layout>
@@ -124,7 +136,12 @@ export function SettingsView() {
           <Button variant="primary" type="submit">
             Submit
           </Button>
-          <Button style={{ marginLeft: 8 }} variant="secondary" type="button">
+          <Button
+            style={{ marginLeft: 8 }}
+            variant="secondary"
+            type="button"
+            onClick={resetSettings}
+          >
             Reset to defaults
           </Button>
         </Form>

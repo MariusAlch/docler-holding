@@ -4,6 +4,8 @@ import http from "http";
 const server = http.createServer();
 const io = socketIO(server);
 
+// TODO: save message history
+
 io.on("connection", (socket) => {
   socket.on("message", (message: string) => {
     io.sockets.send(message);

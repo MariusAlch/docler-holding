@@ -11,8 +11,8 @@ function useMessages(settings: ReturnType<typeof useSettings>) {
 
   function sendMessage(content: string) {
     const message: Message = {
-      authorId: io.id,
-      authorUsername: settings.settings.username,
+      userId: io.id,
+      username: settings.settings.username,
       content,
       timestamp: Date.now(),
     };
@@ -27,18 +27,24 @@ function useMessages(settings: ReturnType<typeof useSettings>) {
   return { messagesList, sendMessage };
 }
 
+// TODO: handle empty username
+
 function useSettings() {
   const defaultSettings: Settings = {
     interfaceColor: "light",
-    username: "helloWorld",
+    username: "",
     clockFormat: "12hours",
     sendOnEnter: "on",
     language: "english",
   };
-
   const [settings, setSettings] = useLocalStorage<Settings>("settings", defaultSettings);
 
-  return { settings: settings!, setSettings, defaultSettings };
+  function resetSettings() {
+    const newSettings: Settings = { ...defaultSettings, username: settings!.username };
+    setSettings(newSettings);
+  }
+
+  return { settings: settings!, setSettings, resetSettings };
 }
 
 const [StoreProvider, useStore] = constate(function () {

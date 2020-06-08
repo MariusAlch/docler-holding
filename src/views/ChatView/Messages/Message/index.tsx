@@ -26,12 +26,14 @@ const Details = styled.div<{ isOwner: boolean }>`
   text-align: ${(p) => (p.isOwner ? "right" : "left")};
 `;
 
+// TODO: handle my message
+
 interface Props {
   message: Message;
 }
 export function Message({ message }: Props) {
-  const myId = 1;
-  const isOwner = message.authorId === myId;
+  const myId = "1";
+  const isOwner = message.userId === myId;
 
   const date = new Date(message.timestamp);
   const formattedTime = `${date.getHours()}:${date.getMinutes()}`;
@@ -40,7 +42,7 @@ export function Message({ message }: Props) {
     <Root isOwner={isOwner}>
       <div>
         <Details isOwner={isOwner}>
-          {!isOwner ? `${message.authorUsername} - ` : ""}
+          {!isOwner ? `${message.username} - ` : ""}
           {formattedTime}
         </Details>
         <Content isOwner={isOwner}>{message.content}</Content>
