@@ -3,6 +3,7 @@ import { Layout } from "src/lib/Layout";
 import { Form, Button } from "react-bootstrap";
 import styled from "styled-components";
 import { useFormik } from "formik";
+import { useStore } from "src/lib/Store";
 
 const Root = styled.div`
   max-width: 400px;
@@ -16,16 +17,12 @@ const Root = styled.div`
 `;
 
 export function SettingsView() {
+  const { settings } = useStore();
+
   const formik = useFormik({
-    initialValues: {
-      interfaceColor: "light",
-      username: "helloWorld",
-      clockFormat: "12hours",
-      sendOnEnter: "on",
-      language: "english",
-    },
+    initialValues: settings.settings,
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      settings.setSettings(values);
     },
   });
 

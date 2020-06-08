@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useFormik } from "formik";
 import { Button, Form } from "react-bootstrap";
 import { plainGray } from "src/lib/colors";
+import { useStore } from "src/lib/Store";
 
 const Root = styled.form`
   display: flex;
@@ -15,23 +16,26 @@ const StyledButton = styled(Button)`
 `;
 
 export function MessageInput() {
+  const { messages } = useStore();
   const formik = useFormik({
     initialValues: {
-      message: "",
+      content: "",
     },
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+    onSubmit: ({ content }) => {
+      if (!content.trim()) return;
+      messages.sendMessage(content);
+      formik.setValues({ content: "" });
     },
   });
 
   return (
     <Root onSubmit={formik.handleSubmit}>
       <Form.Control
-        name="message"
+        name="content"
         style={{ resize: "none" }}
         as="textarea"
         onChange={formik.handleChange}
-        value={formik.values.message}
+        value={formik.values.content}
       />
       <StyledButton type="submit">Send</StyledButton>
     </Root>

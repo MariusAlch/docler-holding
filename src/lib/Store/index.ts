@@ -1,7 +1,8 @@
 import constate from "constate";
 import { useState, useEffect } from "react";
-import { Message } from "src/model";
+import { Message, Settings } from "src/model";
 import socketIO from "socket.io-client";
+import useLocalStorage from "react-use/lib/useLocalStorage";
 
 const io = socketIO("http://localhost:3000");
 
@@ -11,7 +12,7 @@ function useMessages(settings: ReturnType<typeof useSettings>) {
   function sendMessage(content: string) {
     const message: Message = {
       authorId: io.id,
-      authorUsername: io.id,
+      authorUsername: settings.settings.username,
       content,
       timestamp: Date.now(),
     };
@@ -27,7 +28,17 @@ function useMessages(settings: ReturnType<typeof useSettings>) {
 }
 
 function useSettings() {
-  return {};
+  const defaultSettings: Settings = {
+    interfaceColor: "light",
+    username: "helloWorld",
+    clockFormat: "12hours",
+    sendOnEnter: "on",
+    language: "english",
+  };
+
+  const [settings, setSettings] = useLocalStorage<Settings>("settings", defaultSettings);
+
+  return { settings: settings!, setSettings, defaultSettings };
 }
 
 const [StoreProvider, useStore] = constate(function () {
