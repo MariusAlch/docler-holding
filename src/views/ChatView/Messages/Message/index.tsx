@@ -1,8 +1,9 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import styled from "styled-components";
 import { easyBlue, sadGray, textBlack, racingWhite } from "src/lib/colors";
 import { Message } from "src/model";
 import { useStore } from "src/lib/Store";
+import moment from "moment";
 
 const Root = styled.div<{ isOwner: boolean }>`
   display: flex;
@@ -34,9 +35,7 @@ export function Message({ message }: Props) {
   const { settings } = useStore();
 
   const isOwner = message.username === settings.settings.username;
-
-  const date = new Date(message.timestamp);
-  const formattedTime = `${date.getHours()}:${date.getMinutes()}`;
+  const formattedTime = moment(message.timestamp).format("LT");
 
   return (
     <Root isOwner={isOwner}>
