@@ -2,7 +2,7 @@ import styled, { createGlobalStyle } from "styled-components";
 import React from "react";
 import { Link } from "react-router-dom";
 import { Text } from "src/lib/Text";
-import { BlinkingText } from "src/lib/BlinkingText";
+import { BlinkingText } from "./BlinkingText";
 import { useStore } from "src/lib/Store";
 
 const Nav = styled.div`
