@@ -5,7 +5,7 @@ import moment from "moment";
 
 describe("Chat application", () => {
   it("is able to send message", () => {
-    cy.visit("http://localhost:1234");
+    cy.visit("http://localhost:5000");
 
     const message = Math.floor(Math.random() * 10000000).toString();
     sendMessage(message);
@@ -18,7 +18,7 @@ describe("Settings", () => {
   const time = moment();
 
   it("shoud have default settings enabled", () => {
-    cy.visit("http://localhost:1234");
+    cy.visit("http://localhost:5000");
 
     // send a message to ensure we have something to test time on
     sendMessage(randomString());

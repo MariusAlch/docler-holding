@@ -16,6 +16,7 @@ npm ci
 
 # builds and serves client build dirrectory + starts a simple server
 npx concurrently "npm run build && npx serve -s dist" "npm run server"
+# server - localhost:3000; client - localhost:5000;
 ```
 
 ### Running the e2e tests
