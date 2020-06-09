@@ -25,16 +25,22 @@
     "socket.io": "^2.3.0",
     "socket.io-client": "^2.3.0",
     "styled-components": "^5.1.1",
+    "ts-node": "^8.10.2",
     "typescript": "^3.9.5"
   },
   "scripts": {
-    "dev": "parcel src/index.html",
-    "build": "rm -rf dist && parcel build --no-source-maps src/index.html"
+    "dev": "parcel serve -p 5000 src/index.html",
+    "build": "rm -rf dist && parcel build --no-source-maps src/index.html",
+    "server": "ts-node server.ts",
+    "test": "cypress run"
   },
   "alias": {
     "src": "./src"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^4.7.0"
+  }
 }

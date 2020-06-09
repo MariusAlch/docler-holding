@@ -8,7 +8,6 @@ import { SettingsView } from "./views/SettingsView/index";
 import { StoreProvider } from "./lib/Store";
 import { Theme } from "./lib/Theme";
 
-// TODO: add tests
 // TODO: add readme
 
 function App() {

@@ -37,9 +37,9 @@ export function Message({ message }: Props) {
   const isOwner = message.username === settings.settings.username;
 
   return (
-    <Root isOwner={isOwner}>
+    <Root data-test="message" isOwner={isOwner}>
       <div>
-        <Details isOwner={isOwner}>
+        <Details data-test="details" isOwner={isOwner}>
           {!isOwner ? `${message.username} - ` : ""}
           <Time timestamp={message.timestamp} />
         </Details>

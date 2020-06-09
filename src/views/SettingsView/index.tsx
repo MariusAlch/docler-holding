@@ -65,6 +65,7 @@ export function SettingsView() {
                 name="interfaceColor"
                 type="radio"
                 inline
+                id="color-light"
                 value="light"
                 label={language.getText("light")}
               />
@@ -73,6 +74,7 @@ export function SettingsView() {
                 checked={formik.values.interfaceColor === "dark"}
                 name="interfaceColor"
                 type="radio"
+                id="color-dark"
                 inline
                 value="dark"
                 label={language.getText("dark")}
@@ -91,6 +93,7 @@ export function SettingsView() {
                 type="radio"
                 inline
                 value="12hours"
+                id="12hours"
                 label={language.getText("hours12")}
               />
               <Form.Check
@@ -100,6 +103,7 @@ export function SettingsView() {
                 type="radio"
                 inline
                 value="24hours"
+                id="24hours"
                 label={language.getText("hours24")}
               />
             </div>
@@ -116,6 +120,7 @@ export function SettingsView() {
                 type="radio"
                 inline
                 value="on"
+                id="enter-on"
                 label={language.getText("on")}
               />
               <Form.Check
@@ -125,6 +130,7 @@ export function SettingsView() {
                 type="radio"
                 inline
                 value="off"
+                id="enter-off"
                 label={language.getText("off")}
               />
             </div>
